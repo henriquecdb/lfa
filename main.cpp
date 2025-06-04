@@ -11,12 +11,15 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    auto it = Tokens::mp.find("LParenteses");
-    if (it != Tokens::mp.end()) {
-        cout << "Valor: " << it->first << " -> " << it->second << endl;
-    } else {
-        cout << "Not found" << endl;
+    ifstream input("input.txt");
+    ofstream output("output.txt");
+
+    if (!input.is_open() || !output.is_open()) {
+        cerr << "Error" << endl;
+        return 0;
     }
+
+    processTokens(input, output);
 
     return 0;
 }

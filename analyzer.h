@@ -7,10 +7,9 @@
 using namespace std;
 
 namespace Tokens {
-    const unordered_map<string, string> mp = {
-        {"LParenteses", "("},
-        {"RParenteses", ")"},
-    };
+    extern const unordered_map<string, string> mp;
 }
+
+void processTokens(ifstream& input, ofstream& output);
 
 #endif
