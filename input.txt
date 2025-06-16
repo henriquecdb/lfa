@@ -1,1 +1,1 @@
-int VAR = VAR - 4;
+int VAR = VAR - 4.0 ;

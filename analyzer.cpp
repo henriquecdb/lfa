@@ -41,12 +41,44 @@ const unordered_map<string, string> Tokens::mp = {
     {"VAR", "VAR"}
 };
 
+bool handleInt(string s) {
+    if (s.empty()) return false;
+    
+    for (auto c : s)
+        if (!isdigit(c)) return false;
+    
+    return true;
+}
+
+bool handleFloat(string s) {
+    if (s.empty()) return false;
+    
+    bool hasDot = false;
+    
+    for (auto c : s) {
+        if (c == '.') {
+            if (hasDot) return false;
+            hasDot = true;
+        } else if (!isdigit(c)) {
+            return false;
+        }
+    }
+    
+    return hasDot && s.length() > 1;
+}
+
 void processTokens(ifstream &input, ofstream &output) {
     string s;
     while (input >> s) {
-        auto it = Tokens::mp.find(s);
-        if (it != Tokens::mp.end()) {
-            output << it->second << ' ';
+        if (handleInt(s)) {
+            output << "NUM_INT" << ' ';
+        } else if (handleFloat(s)) {
+            output << "NUM_FLOAT" << ' ';
+        } else {
+            auto it = Tokens::mp.find(s);
+            if (it != Tokens::mp.end()) {
+                output << it->second << ' ';
+            }
         }
     }
 }

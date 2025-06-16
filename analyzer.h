@@ -10,6 +10,8 @@ namespace Tokens {
     extern const unordered_map<string, string> mp;
 }
 
+bool handleInt(string s);
+bool handleFloat(string s);
 void processTokens(ifstream& input, ofstream& output);
 
 #endif

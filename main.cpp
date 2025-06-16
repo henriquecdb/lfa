@@ -13,6 +13,7 @@ int main()
 
     ifstream input("input.txt");
     ofstream output("output.txt");
+    string s;
 
     if (!input.is_open() || !output.is_open()) {
         cerr << "Error" << endl;
