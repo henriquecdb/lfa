@@ -21,10 +21,14 @@ int main(int argc, char *argv[])
 
     if (!input.is_open() || !output.is_open()) {
         cerr << "Error" << endl;
+        input.close();
         return 0;
     }
 
     processTokens(input, output);
+
+    input.close();
+    output.close();
 
     return 0;
 }
